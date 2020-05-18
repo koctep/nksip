@@ -194,9 +194,8 @@ make_id(#sipmsg{event={Event, Opts}}) ->
     Id = nklib_util:get_value(<<"id">>, Opts),
     nklib_util:hash({Event, Id});
 
-make_id(#sipmsg{event=Event}) ->
-    lager:info("TRACE event ~p", [Event]),
-    asd:asd().
+make_id(#sipmsg{event=undefined}) ->
+    <<"id">>.
 
 
 %% @private Finds a event.
